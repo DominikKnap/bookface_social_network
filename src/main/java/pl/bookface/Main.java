@@ -2,6 +2,7 @@ package pl.bookface;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -14,6 +15,7 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
+    @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
@@ -21,6 +23,7 @@ public class Main {
                 registry.addMapping("users").allowedOrigins(LOCALHOST_3000);
                 registry.addMapping("login").allowedOrigins(LOCALHOST_3000);
                 registry.addMapping("posts").allowedOrigins(LOCALHOST_3000);
+                registry.addMapping("answers").allowedOrigins(LOCALHOST_3000);
             }
         };
     }
